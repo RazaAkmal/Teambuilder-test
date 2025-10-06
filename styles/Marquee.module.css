@@ -1,10 +1,50 @@
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marqueeContent {
+  display: flex;
+  animation: marqueeRightToLeft 40s linear infinite;
+  will-change: transform;
+  gap: 1.25rem; /* Equivalent to mr-5 */
+}
+
+.marqueeContent:hover {
+  animation-play-state: paused;
+}
+
+/* Keyframes for smooth right-to-left movement */
+@keyframes marqueeRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsive animation speed */
+@media (max-width: 640px) {
+  .marqueeContent {
+    animation-duration: 30s;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marqueeContent {
+    animation-duration: 50s;
+  }
+}
+
+/* Legacy support for existing anim class */
 .anim {
     position: absolute;
     will-change: transform;
-    animation: marquee 15s linear infinite ;
+    animation: marqueeRightToLeft 15s linear infinite;
 }
 
 .anim:hover {
     animation-play-state: paused;
-    
 }
